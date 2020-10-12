@@ -51,7 +51,6 @@ export class Moment {
                     let lastDate = new Date(year, 2, 0)
                     date = date <= lastDate ? date : lastDate
                 }
-                // result = new Date(`${year}-${month}-${date} ${hour}:${minute}:${seconds}`)
                 result = new Date(year, month, date, hour, minute, seconds)
                 break;
             case 'Q':

@@ -59,7 +59,7 @@ class Moment {
                 break;
             case 'Q':
                 {
-                    let months = year * 12 + num * 3
+                    let months = year * 12 + num * 3  + month
                     year = ~~(months / 12)
                     month = months % 12
                     let lastDate = new Date(year, month, 0)
@@ -69,7 +69,8 @@ class Moment {
                 break;
             case 'M':
                 {
-                    let months = year * 12 + num
+                    let months = year * 12 + num + month
+                    console.log(months)
                     year = ~~(months / 12)
                     month = months % 12
                     let lastDate = new Date(year, month, 0)

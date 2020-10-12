@@ -7,6 +7,10 @@ class Moment {
         let reg = /^\d{4}-\d{1,2}-\d{1,2}(T\d{1,2}:\d{1,2}:\d{1,3})?$/
         this.time = reg.test(time) ? new Date(time.replace('T', ' ')) : new Date()
     }
+    /** 获取日期 */
+    date() {
+        return this.time.getDate()
+    }
     /** 获取星期几 */
     day() {
         return this.time.getDay() + ''
@@ -74,19 +78,19 @@ class Moment {
                 }
                 break;
             case 'w':
-                result = new Date(this.time + (1000 * 60 * 60 * 24 * 7) * num)
+                result = new Date(this.time.getTime() + (1000 * 60 * 60 * 24 * 7) * num)
                 break
             case 'd':
-                result = new Date(this.time + (1000 * 60 * 60 * 24) * num)
+                result = new Date(this.time.getTime() + (1000 * 60 * 60 * 24) * num)
                 break
             case 'h':
-                result = new Date(this.time + (1000 * 60 * 60) * num)
+                result = new Date(this.time.getTime() + (1000 * 60 * 60) * num)
                 break
             case 'm':
-                result = new Date(this.time + (1000 * 60) * num)
+                result = new Date(this.time.getTime() + (1000 * 60) * num)
                 break
             case 's':
-                result = new Date(this.time + (1000) * num)
+                result = new Date(this.time.getTime() + (1000) * num)
                 break
             default:
                 console.warn('格式错误')
@@ -119,5 +123,6 @@ class Moment {
         return format
     }
 }
-// exports.Moment = Moment
-export default Moment
+let a = new Moment()
+console.log(a.add(-3, 'd'))
+// export default Moment

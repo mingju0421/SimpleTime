@@ -123,6 +123,4 @@ class Moment {
         return format
     }
 }
-let a = new Moment()
-console.log(a.add(-3, 'd'))
-// export default Moment
+export default Moment

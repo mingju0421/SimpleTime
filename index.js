@@ -97,7 +97,8 @@ class Moment {
                 result = this.time
                 break;
         }
-        return this.time = result
+        this.time = result
+        return this
     }
     /**
      * 时间格式化

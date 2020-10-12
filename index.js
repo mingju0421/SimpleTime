@@ -119,4 +119,5 @@ class Moment {
         return format
     }
 }
-exports.Moment = Moment
+// exports.Moment = Moment
+export default Moment

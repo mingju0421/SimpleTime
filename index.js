@@ -31,6 +31,10 @@ class Moment {
     month() {
         return this.time.getMonth() + 1 + ''
     }
+    /** 获取季度 */
+    quarter() {
+        return Math.ceil((this.time.getMonth() + 1) / 3) + ''
+    }
     /** 获取年份 */
     year() {
         return this.time.getFullYear() + ''
@@ -100,6 +104,63 @@ class Moment {
         }
         this.time = result
         return this
+    }
+    /**
+     * 获取开始日期
+     * @param {string} type - Y:年, Q: 季度, M:月, w: 周,
+     */
+    startDay(type) {
+        let year = this.time.getFullYear()
+        let month = this.time.getMonth()
+        let quarter = Math.ceil((month + 1) / 3)
+        let result
+        switch (type) {
+            case 'Y':
+                result = `${year}-1-1`
+                break;
+            case 'Q':
+                result = `${year}-${-2 + quarter * 3}-1`
+                break;
+            case 'M':
+                result = `${year}-${month}-1`
+                break;
+            case 'w':
+                result = new Moment(this.time).add(-this.time.getDay() + 1, 'd').format()
+                break
+            default:
+                console.warn(`startDay 错误`)
+                break;
+        }
+        return result
+    }
+    /**
+     * 获取结束日期
+     * @param {string} type - Y:年, Q: 季度, M:月, w: 周,
+     */
+    endDay(type) {
+        let year = this.time.getFullYear()
+        let month = this.time.getMonth() + 1
+        let quarter = Math.ceil((month) / 3)
+        let result
+        switch (type) {
+            case 'Y':
+                result = `${year}-12-31`
+                break;
+            case 'Q':
+                result = `${year}-${quarter * 3}-${new Date(year,quarter * 3, 0).getDate()}`
+                break;
+            case 'M':
+                let date = new Date(year,month,0).getDate()
+                result = `${year}-${month}-${date}`
+                break;
+            case 'w':
+                result = new Moment(this.time).add(7 - this.time.getDay(), 'd').format()
+                break
+            default:
+                console.warn(`startDay 错误`)
+                break;
+        }
+        return result
     }
     /**
      * 时间格式化

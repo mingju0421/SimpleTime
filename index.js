@@ -16,11 +16,11 @@ class Moment {
      * @param {number?} num - 设置星期几
      */
     day(num) {
-        if(num) {
+        if (num) {
             let week = new Date(this.time).getDay()
             this.add(num - week, 'd')
             return this
-        }else {
+        } else {
             return this.time.getDay() + ''
         }
     }
@@ -72,7 +72,7 @@ class Moment {
                 break;
             case 'Q':
                 {
-                    let months = year * 12 + num * 3  + month
+                    let months = year * 12 + num * 3 + month
                     year = ~~(months / 12)
                     month = months % 12
                     let lastDate = new Date(year, month, 0)
@@ -156,10 +156,10 @@ class Moment {
                 result = `${year}-12-31`
                 break;
             case 'Q':
-                result = `${year}-${quarter * 3}-${new Date(year,quarter * 3, 0).getDate()}`
+                result = `${year}-${quarter * 3}-${new Date(year, quarter * 3, 0).getDate()}`
                 break;
             case 'M':
-                let date = new Date(year,month,0).getDate()
+                let date = new Date(year, month, 0).getDate()
                 result = `${year}-${month}-${date}`
                 break;
             case 'w':
@@ -186,9 +186,9 @@ class Moment {
             'm+': '0000' + time.getMinutes(),
             's+': '0000' + time.getSeconds()
         }
-        for(let key of Object.keys(option)) {
+        for (let key of Object.keys(option)) {
             ret = new RegExp(`(${key})`).exec(format)
-            if(ret) {
+            if (ret) {
                 format = format.replace(ret[1], option[key].substring(option[key].length - ret[1].length))
             }
         }

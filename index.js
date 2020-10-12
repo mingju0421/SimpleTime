@@ -11,9 +11,18 @@ class Moment {
     date() {
         return this.time.getDate()
     }
-    /** 获取星期几 */
-    day() {
-        return this.time.getDay() + ''
+    /**
+     * 获取或设置星期几
+     * @param {number?} num - 设置星期几
+     */
+    day(num) {
+        if(num) {
+            let week = new Date(this.time).getDay()
+            this.add(num - week, 'd')
+            return this
+        }else {
+            return this.time.getDay() + ''
+        }
     }
     /** 获取本月第几周 */
     monthWeek() {

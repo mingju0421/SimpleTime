@@ -1,6 +1,6 @@
 {
   "name": "simple-time-mj",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "简单的时间处理工具",
   "main": "index.min.js",
   "scripts": {

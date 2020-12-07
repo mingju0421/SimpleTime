@@ -209,5 +209,5 @@ class Moment {
     return format;
   }
 }
-const monent = (time) => new Moment(time);
+const monent = (time = new Date().getTime()) => new Moment(time);
 export default monent;
